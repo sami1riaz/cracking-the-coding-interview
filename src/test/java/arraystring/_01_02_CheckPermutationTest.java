@@ -35,7 +35,22 @@ public class _01_02_CheckPermutationTest {
     }
 
     @Test
+    public void withBHavingMoreRepeatingChars() {
+        assertFalse(s.check("aabcb", "aacba"));
+    }
+
+   @Test
     public void withDifferentLength() {
         assertFalse(s.check("abc", "ab"));
+    }
+
+    @Test
+    public void withDiffCaseSensitiveChars() {
+        assertFalse(s.check("aBc", "abc"));
+    }
+
+    @Test
+    public void withSameCaseSensitiveChars() {
+        assertTrue(s.check("aBc", "acB"));
     }
 }

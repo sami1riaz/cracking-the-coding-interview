@@ -8,9 +8,7 @@ package treegraph;
 class _04_04_CheckBalanced {
 
     //time o(N) space o(logN)
-    boolean isBalanced(BinaryTreeNode root) {
-        throw new UnsupportedOperationException();
-    }
+    boolean isBalanced(BinaryTreeNode root) { throw new UnsupportedOperationException(); }
 
 
 }

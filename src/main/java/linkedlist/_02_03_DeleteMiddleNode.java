@@ -8,6 +8,15 @@ package linkedlist;
 class _02_03_DeleteMiddleNode {
 
     boolean deleteMiddleNode(LinkedListNode node) {
-        throw new UnsupportedOperationException();
+
+        if (node == null || node.next == null) {
+            return false;
+        }
+
+        node.val = node.next.val;
+        node.next = node.next.next;
+
+        return true;
+
     }
 }

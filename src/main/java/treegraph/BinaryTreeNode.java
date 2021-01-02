@@ -8,4 +8,8 @@ class BinaryTreeNode {
     BinaryTreeNode(int val) {
         this.val = val;
     }
+
+    public BinaryTreeNode() {
+
+    }
 }

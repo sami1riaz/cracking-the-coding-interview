@@ -11,7 +11,32 @@ package arraystring;
  * Output: "Mr%20John%20Smith"
  */
 class _01_03_URLify {
-    char[] urlify(char[] chars, int trueLength) {
-        throw new UnsupportedOperationException();
+    public static char[] urlify(char[] url, int trueLength) {
+
+        // find number of spaces in the original string
+        int spaces = 0;
+        for (int i = 0; i < trueLength;  i++) {
+            if (url[i] == ' ' ) {
+                spaces++;
+            }
+        }
+
+        int idx = trueLength - 1  + spaces * 2;
+        System.out.println("idx = " + idx + " urlLength = " + url.length );
+        if (spaces == 0 || idx >= url.length) { return url;}
+
+        for (int trueIdx = trueLength - 1; trueIdx >= 0; trueIdx--)  {
+            if (url[trueIdx] == ' ') {
+                url[idx] = '0';
+                url[idx - 1] = '2';
+                url[idx - 2] = '%';
+                idx = idx - 3;
+            } else {
+                url[idx] = url[trueIdx];
+                idx--;
+            }
+        }
+        return url;
     }
+
 }

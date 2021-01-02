@@ -11,17 +11,17 @@ public class _02_02_ReturnKthToLastTest {
 
     @Test
     public void withOutOfScopeK() {
-        assertNull(s.kthToLast(LinkedListNode.of(1, 2, 3), 3));
+        assertNull(s.kthToLast(LinkedListNode.of(1, 2, 3), 4));
     }
 
     @Test
-    public void withZero() {
-        assertEquals(3, s.kthToLast(LinkedListNode.of(1, 2, 3), 0).val);
+    public void returnLast() {
+        assertEquals(3, s.kthToLast(LinkedListNode.of(1, 2, 3), 1).val);
     }
 
     @Test
     public void withNoneZero() {
-        assertEquals(2, s.kthToLast(LinkedListNode.of(1, 2, 3), 1).val);
+        assertEquals(1, s.kthToLast(LinkedListNode.of(1, 2, 3), 3).val);
     }
 
 

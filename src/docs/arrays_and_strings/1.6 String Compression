@@ -1,0 +1,37 @@
+1.6 String Compression
+
+Input: aabcccccaaa, Output: a2b1c5a3
+
+Loop through the array and check if the letter is the same as the previous one.
+If yes, increment the counter
+If not, add the letter along with its count to the new string and revert counter
+If new string is longer than the original, return original.
+
+
+
+public static String compress(String s) {
+
+	if (s.length() < 2) {
+		return s;
+	}
+
+	int count = 0;
+	StringBuilder compressed = new StringBuilder();
+	for (int i = 0; i < s.length(); i++) {
+		count++;
+		if (i+1 >= s.length() || s.charAt(i) != s.charAt(i+1)) {
+			compressed.append(s.charAt(i));
+			compressed.append(count);
+			count = 0;
+		}
+	}
+
+	String result = compressed.toString();
+	if (result.length() >= s.length()) {
+		return s;
+	}
+	return result;
+}
+
+
+O(n) time as we iterate the string once. O(n) space for the string builder

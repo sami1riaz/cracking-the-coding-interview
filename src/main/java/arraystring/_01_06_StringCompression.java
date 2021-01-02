@@ -7,7 +7,28 @@ package arraystring;
  * the original string. You can assume the string has only uppercase and lowercase letters (a - z).
  */
 class _01_06_StringCompression {
-    String compress(String s) {
-        throw new UnsupportedOperationException();
+    public static String compress(String s) {
+
+        if (s.length() < 2) {
+            return s;
+        }
+
+
+        int count = 0;
+        StringBuilder compressed = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            count++;
+            if (i+1 >= s.length() || s.charAt(i) != s.charAt(i+1)) {
+                compressed.append(s.charAt(i));
+                compressed.append(count);
+                count = 0;
+            }
+        }
+
+        String result = compressed.toString();
+        if (result.length() >= s.length()) {
+            return s;
+        }
+        return result;
     }
 }

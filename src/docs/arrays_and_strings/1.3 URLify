@@ -1,0 +1,73 @@
+1.3 URLify
+
+Write a method to replace all spaces in a string with '%20'. 
+You may assume that the string has sufficient space at the end to hold the additional characters, and that you are given the "true" length of the string.
+(Note: If implementing in Java, please use a character array so that you can perform this operation in place.)
+
+Input: ['s', 'a', 'm', 'i', ' ', '.', ' ', 'c', 'o', 'm', '', '', '', '', '', ''], 10
+Output: ['s', 'a', 'm', 'i', '%', '2', '0', '.', '%', '2', '0', 'c', 'o', 'm']
+
+If we didn't have to do this in place, it would be simple:
+	loop through array, and add chars to a new array
+	when you see a white space, add '%20' in the new array
+	repeat till end of string
+
+If we do this in place, we need to first find the number of empty spaces in the string.
+This will help figure out what index we need to start on (since we do not know the actual length of the array)
+
+Take a look at the following example:
+Input: ['s', 'a', 'm', 'i', ' ', '.', ' ', 'c', 'o', 'm', '', '', '', '', '', ''], 10
+	We need to start at index 13 (because we are removing 1 char (empty space) and adding 3 chars)
+	Since the string ends at index 9 (trueIdx), we can start from index 13 (idx) and move backwards from both index 9 and 13.
+	We continously swap the characters at both positions.
+	If we see a ' ', we add '%', '2', '0' and decrement idx by 3
+	
+												trueidx			  idx
+	['s', 'a', 'm', 'i', ' ', '.', ' ', 'c', 'o', 'm', '', '', '', '', '', '']
+	
+								  trueidx			   idx
+	['s', 'a', 'm', 'i', ' ', '.', ' ', 'c', 'o', 'm', '', 'c', 'o', 'm', '', '']
+	
+							trueidx	 	idx
+	['s', 'a', 'm', 'i', ' ', '.', ' ', 'c', '%', '2', '0', 'c', 'o', 'm', '', '']
+	
+						trueidx	   idx
+	['s', 'a', 'm', 'i', ' ', '.', ' ', '.', '%', '2', '0', 'c', 'o', 'm', '', '']
+						  idx
+						trueidx	   
+	['s', 'a', 'm', 'i', '%', '2', '0', '.', '%', '2', '0', 'c', 'o', 'm', '', '']
+
+	idx
+	trueidx	   
+	['s', 'a', 'm', 'i', '%', '2', '0', '.', '%', '2', '0', 'c', 'o', 'm', '', '']
+	
+This Algo takes us O(n) time since we loop through the array once and O(1) space as we did it in-place.
+
+public static void urlify(char[] url, int trueLength) {
+
+	// find number of spaces in the original string
+	int spaces = 0;
+	for (int i = 0; i < trueLength;  i++) {
+		if (url[i] == ' ' ) {
+			spaces++;
+		}
+	}
+	
+	if (spaces == 0) {
+		return;
+	}
+	
+	int idx = trueLength - 1  + spaces * 2;
+	for (int trueIdx = trueLength - 1; trueIdx >= 0; trueIdx--)  {
+		if (url[trueIdx] == ' ') {
+			url[idx] = '0';
+			url[idx - 1] = '2';
+			url[idx - 2] = '%';
+			idx = idx - 3;
+		} else {
+			url[idx] = url[trueIdx];
+			idx--;
+		}
+	}	
+}
+

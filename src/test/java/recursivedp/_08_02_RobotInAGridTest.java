@@ -4,8 +4,8 @@ import org.junit.Test;
 
 import java.awt.*;
 import java.util.Arrays;
-import java.util.Collections;
 
+import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
 public class _08_02_RobotInAGridTest {
@@ -49,7 +49,7 @@ public class _08_02_RobotInAGridTest {
                 {false, false, true}
         };
 
-        assertEquals(Collections.emptyList(), s.findPath(grid));
+        assertNull(s.findPath(grid));
     }
 
 

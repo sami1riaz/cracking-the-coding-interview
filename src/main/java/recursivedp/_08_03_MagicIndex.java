@@ -6,7 +6,34 @@ package recursivedp;
  */
 class _08_03_MagicIndex {
 
+    // This solution works for both distinct and non-distinct integers
+    // O(logn) time
     int findMagicIndex(int[] arr) {
-        throw new UnsupportedOperationException();
+        return magicIndex(arr, 0, arr.length - 1);
+    }
+
+    int magicIndex(int[] arr, int start, int end) {
+        // if binary search finishes, return -1
+        if (end < start) {
+            return -1;
+        }
+
+        int midIndex = end + start / 2;
+        int midValue = arr[midIndex];
+        if (midIndex == midValue) {
+            return midIndex;
+        }
+        // Search right side
+        int rightIndex = Math.min(midIndex + 1, midValue);
+        int right = magicIndex(arr, rightIndex, end);
+        if (right > 0) {
+            return right;
+        }
+
+        // Search left side
+        int leftIndex = Math.min(midIndex - 1, midValue);
+        int left = magicIndex(arr, start, leftIndex);
+
+        return left;
     }
 }

@@ -31,7 +31,7 @@ public class _03_03_StackOfPlatesTest {
         assertEquals(4, stack.pop());
         assertEquals(3, stack.pop());
     }
-
+/*
     @Test
     public void withSmallThreshold_PopAtIndex() {
         _03_03_StackOfPlates stack = new _03_03_StackOfPlates(2);
@@ -50,4 +50,6 @@ public class _03_03_StackOfPlatesTest {
         assertEquals(3, stack.pop());
 
     }
+
+ */
 }

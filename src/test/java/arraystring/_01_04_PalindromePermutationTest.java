@@ -3,6 +3,7 @@ package arraystring;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class _01_04_PalindromePermutationTest {
 
@@ -31,5 +32,15 @@ public class _01_04_PalindromePermutationTest {
     @Test
     public void withTwoWords_EvenLetters() {
         assertTrue(s.check("act cat"));
+    }
+
+    @Test
+    public void evenFalse() {
+        assertFalse(s.check("Tact Coat"));
+    }
+
+    @Test
+    public void oddFalse() {
+        assertFalse(s.check("Tact Cox"));
     }
 }

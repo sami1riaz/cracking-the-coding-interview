@@ -13,6 +13,10 @@ public class _02_01_RemoveDupsTest {
     }
 
     @Test
+    public void withOneNode() {
+        Assert.assertEquals(LinkedListNode.of(1), s.removeDups(LinkedListNode.of(1)));
+    }
+    @Test
     public void withUniqueList() {
         Assert.assertEquals(LinkedListNode.of(1, 2, 3, 4), s.removeDups(LinkedListNode.of(1, 2, 3, 4)));
     }
@@ -20,6 +24,11 @@ public class _02_01_RemoveDupsTest {
     @Test
     public void withDuplications() {
         Assert.assertEquals(LinkedListNode.of(1, 2, 3, 4), s.removeDups(LinkedListNode.of(1, 2, 2, 3, 2, 4)));
+    }
+
+    @Test
+    public void withAllDuplications() {
+        Assert.assertEquals(LinkedListNode.of(1), s.removeDups(LinkedListNode.of(1, 1, 1, 1, 1, 1)));
     }
 
 }
