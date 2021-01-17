@@ -13,7 +13,6 @@ class _01_06_StringCompression {
             return s;
         }
 
-
         int count = 0;
         StringBuilder compressed = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {

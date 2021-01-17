@@ -10,27 +10,46 @@ class _02_01_RemoveDups {
 
     LinkedListNode removeDups(LinkedListNode head) {
 
-        // to keep track of head node cuz we need to return it
-        LinkedListNode dummyHead = new LinkedListNode(0);
-        dummyHead.next = head;
+//        // to keep track of head node cuz we need to return it
+//        LinkedListNode dummyHead = new LinkedListNode(0);
+//        dummyHead.next = head;
+//
+//        HashSet<Integer> unique = new HashSet<>();
+//
+//        // we need a prev node because to remove the dup
+//        // we need to change the pointer of the prev node to the one the dup is pointing to
+//        LinkedListNode prev = null;
+//
+//        while (head != null){
+//            if (unique.contains(head.val)) {
+//                prev.next = head.next;
+//            } else {
+//                unique.add(head.val);
+//                prev = head;
+//            }
+//            head = head.next;
+//        }
+//
+//        return dummyHead.next;
 
-        HashSet<Integer> unique = new HashSet<>();
+        HashSet<Integer> dups = new HashSet<>();
 
-        // we need a prev node because to remove the dup
-        // we need to change the pointer of the prev node to the one the dup is pointing to
+        LinkedListNode dummy = new LinkedListNode(0);
+        dummy.next = head;
+
         LinkedListNode prev = null;
 
-        while (head != null){
-            if (unique.contains(head.val)) {
+        while ( head != null) {
+
+            if (dups.contains(head.val)) {
                 prev.next = head.next;
             } else {
-                unique.add(head.val);
+                dups.add(head.val);
                 prev = head;
             }
+
             head = head.next;
         }
-
-        return dummyHead.next;
-
+        return dummy.next;
     }
 }
